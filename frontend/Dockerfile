@@ -2,6 +2,9 @@
 # Dùng Node.js để build code Vue thành các file tĩnh
 FROM node:18-alpine AS builder
 
+# Cài đặt các công cụ build cần thiết cho các gói native
+RUN apk add --no-cache build-base python3
+
 # Đặt thư mục làm việc
 WORKDIR /app
 
