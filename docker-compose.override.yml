@@ -1,0 +1,20 @@
+# version: '3.8'
+
+services:
+  backend:
+    # Ghi đè CMD để chạy server dev với live-reload
+    command: uvicorn main:app --host 0.0.0.0 --port 80 --reload
+    volumes:
+      # Đồng bộ code để live-reload
+      - ./backend:/app
+
+  frontend:
+    # Ghi đè port cho server dev của Vite
+    ports:
+      - "5173:5173"
+    # Ghi đè CMD để chạy server dev
+    command: npm run dev -- --host
+    volumes:
+      # Đồng bộ code để live-reload
+      - ./frontend:/app
+      - /app/node_modules
