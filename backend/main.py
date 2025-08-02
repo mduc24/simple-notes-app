@@ -2,15 +2,12 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 app = FastAPI()
 
-origins = [
-    "http://35.78.101.190",
-    "http://localhost:5173",
-    "http://localhost:3000",
-    "http://localhost:80",
-]
+origins_str = os.getenv("CORS_ORIGINS", "http://localhost:5173") # Giá trị mặc định cho local
+origins = origins_str.split(",")
 
 app.add_middleware(
     CORSMiddleware,
