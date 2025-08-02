@@ -5,7 +5,7 @@ import { ref, onMounted } from 'vue'
 const notes = ref([])
 const noteForm = ref({ id: null, title: '', content: '' })
 
-const API_URL = 'http://35.78.101.190/:8080' // Đảm bảo port này khớp với backend của bạn
+const API_URL = 'http://35.78.101.190:8080' // Đảm bảo port này khớp với backend của bạn
 
 // --- API Functions ---
 async function getNotes() {
